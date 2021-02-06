@@ -67,8 +67,20 @@ class ParticipantsController extends Controller
      */
     public function update(Request $request, Participant $participant)
     {
-        $changing_user_property = $request->changing_user_property;
+        return response()->json([
+            'a' => $request->a,
+            'b' => $request->b
+        ], 200);
         $item = Participant::where('user_uid', $request->user_uid)->first();
+        if(!$item) {
+            return response()->json([
+                'message' => $request->user_uid
+            ], 200);
+        }
+        return response()->json([
+            'message' => $request->changing_user_property_value
+        ], 200);
+        $changing_user_property = $request->changing_user_property;
         $item->$changing_user_property = $request->changing_user_property_value;
         return response()->json([
             'message'=>'ユーザー情報を更新しました'

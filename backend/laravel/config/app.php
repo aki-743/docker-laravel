@@ -229,4 +229,7 @@ return [
 
     ],
 
+    // グーグルリキャプチャのシークレットキー
+    'RECAPTCHA_SECRET_KEY' => env('RECAPTCHA_SECRET_KEY')
+
 ];
