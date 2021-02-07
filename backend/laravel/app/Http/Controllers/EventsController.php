@@ -17,8 +17,8 @@ class EventsController extends Controller
     {
         $items = Event::all();
         return response()->json([
-            'message'=>'Get eventsData successfully',
-            'data'=>$items
+            'data'=>$items,
+            'message'=>'Getting event data is success'
         ], 200);
     }
 
@@ -42,7 +42,7 @@ class EventsController extends Controller
         $item->event_detail=$request->event_detail;
         $item->save();
         return response()->json([
-          'message'=>'Add eventsdata successfully'
+          'message'=>'To add event data is success'
         ], 200);
     }
 
@@ -56,8 +56,8 @@ class EventsController extends Controller
     {
         $participants = DB::table('participants')->where('share_id', $event->id)->get();
         return response()->json([
-            'message'=>'Get participants successfully',
-            'data'=>$participants
+            'data'=>$participants,
+            'message'=>'Getting participants is success'
         ], 200);
     }
 
@@ -82,7 +82,7 @@ class EventsController extends Controller
         $item->event_detail=$request->event_detail;
         $item->save();
         return response()->json([
-            'message'=>'イベント内容を更新しました'
+            'message'=>'Updating event content is success'
         ]);
     }
 
@@ -97,11 +97,11 @@ class EventsController extends Controller
         $item = Event::where('id', $event->id)->delete();
         if($item){
             return response()->json([
-                'message'=>'イベントを消去しました'
+                'message'=>'Deleted event is success'
             ]);
         }else{
             return response()->json([
-                'message'=>'イベントの消去に失敗しました'
+                'message'=>'Deleted event is false'
             ]);
         }
     }

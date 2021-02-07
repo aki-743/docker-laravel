@@ -11,7 +11,8 @@ class RandomNumberGenerate extends Controller
         $random = Str::random(128);
 
         return response()->json([
-            'data' => $random
+            'data' => $random,
+            'message' => 'Generating random number is success'
         ]);
     }
 }

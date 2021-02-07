@@ -21,7 +21,7 @@ use App\Http\Controllers\StripeController;
 Route::apiResource('/events', EventsController::class);
 Route::get('/participants', [ParticipantsController::class, 'index']);
 Route::post('/participants', [ParticipantsController::class, 'store']);
-Route::put('/participants/{a}/{b}', [ParticipantsController::class, 'update']);
+Route::put('/participants', [ParticipantsController::class, 'update']);
 Route::delete('/participants', [ParticipantsController::class, 'destroy']);
 Route::get('/randomnumbergenerate', [RandomNumberGenerate::class, 'index']);
 Route::post('/recaptchafetchapi', [ReCaptchaFetchApiController::class, 'post']);

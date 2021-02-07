@@ -16,7 +16,8 @@ class ParticipantsController extends Controller
     {
         $items = Participant::all();
         return response()->json([
-            'data'=>$items
+            'data'=>$items,
+            'message' => 'Getting event data is success'
         ], 200);
     }
 
@@ -31,7 +32,7 @@ class ParticipantsController extends Controller
         $same_item = Participant::where('user_uid', $request->user_uid)->first();
         if($same_item){
             return response()->json([
-                'message'=>'既にイベントに参加しています'
+                'message'=>'You have already participated in the event'
             ]);
         }else{
             $item = new Participant;
@@ -42,7 +43,7 @@ class ParticipantsController extends Controller
             $item->user_lights = $request->user_lights;
             $item->save();
             return response()->json([
-                'message'=>'イベントに参加しました！'
+                'message'=>'Participating in the event is success'
             ], 200);
         }
     }
@@ -67,23 +68,29 @@ class ParticipantsController extends Controller
      */
     public function update(Request $request, Participant $participant)
     {
+        // $a = preg_replace('/images\//', '%2F', $request->changing_user_property_value);
+        $a = preg_replace('/\/([a-zA-Z0-9ぁ-んァ-ヶ亜-熙]*\.jpg|jpeg|png)/', '%2F$1', $request->changing_user_property_value);
         return response()->json([
-            'a' => $request->a,
-            'b' => $request->b
+            'regex' => $a
         ], 200);
         $item = Participant::where('user_uid', $request->user_uid)->first();
         if(!$item) {
             return response()->json([
-                'message' => $request->user_uid
+                'message' => 'Valid user is not exist'
             ], 200);
         }
-        return response()->json([
-            'message' => $request->changing_user_property_value
-        ], 200);
+        // ユーザーの更新する項目を$request->changing_user_propertyで受け取る
+        // ユーザーの更新する項目の値を$request->changing_user_property_valueで受け取る
         $changing_user_property = $request->changing_user_property;
-        $item->$changing_user_property = $request->changing_user_property_value;
+        if($request->token) {
+            // firebaseのphotoURLを読み込むとき、photoURLに&tokenがありphotoURLを正しく読み込むための作業
+            $item->$changing_user_property = $request->changing_user_property_value . '?token=' . $request->token;
+        } else {
+            $item->$changing_user_property = $request->changing_user_property_value;
+        }
+        $item->save();
         return response()->json([
-            'message'=>'ユーザー情報を更新しました'
+            'message'=>'Updating user is success'
         ], 200);
     }
 
@@ -99,8 +106,8 @@ class ParticipantsController extends Controller
         $item = Participant::where('user_uid', $request->user_uid)->delete();
         if($item) {
             return response()->json([
-                'message'=>'退会手続きを行いました。何かご不明な点があれば、こちらのリンクからお問い合わせください。'
-            ]);
+                'message'=>'Deleted user is success'
+            ], 200);
         }
 
         // イベント関連の処理
@@ -109,13 +116,13 @@ class ParticipantsController extends Controller
             // 消去したイベントに参加していたユーザーを全て消去
             Participant::where('share_id', $request->share_id)->delete();
             return response()->json([
-                'message'=>'イベントの参加者を全員消去しました'
+                'message'=>'Deleted all participants in the event is success'
             ], 200);
         }else{
             // ユーザーがイベントの参加をキャンセルした時の処理
             Participant::where('share_id', $request->share_id)->where('user_name', $request->user_name)->delete();
             return response()->json([
-                'message'=>'イベントの参加をキャンセルしました'
+                'message'=>'Canceling participation in the event is success'
             ], 200);
         }
     }

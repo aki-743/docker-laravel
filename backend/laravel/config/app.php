@@ -230,6 +230,7 @@ return [
     ],
 
     // グーグルリキャプチャのシークレットキー
-    'RECAPTCHA_SECRET_KEY' => env('RECAPTCHA_SECRET_KEY')
-
+    'RECAPTCHA_SECRET_KEY' => env('RECAPTCHA_SECRET_KEY'),
+    // ストライプのシークレットキー
+    'STRIPE_SECRET_KEY' => env('STRIPE_SECRET_KEY')
 ];

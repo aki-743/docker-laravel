@@ -17,7 +17,8 @@ class ReCaptchaFetchApiController extends Controller
         if(!isset($token)){
             // tokenが無かった場合の処理
             return response()->json([
-                'data' => ''
+                'data' => '',
+                'message' => 'The token is undefiend'
             ]);
         }
 
@@ -27,7 +28,8 @@ class ReCaptchaFetchApiController extends Controller
         );
 
         return response()->json([
-            'data' => $response->getBody()->getContents()
+            'data' => $response->getBody()->getContents(),
+            'message' => 'Getting recapcha`s score is success'
         ]);
     }
 }
