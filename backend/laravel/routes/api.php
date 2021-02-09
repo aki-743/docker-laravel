@@ -25,4 +25,5 @@ Route::put('/participants', [ParticipantsController::class, 'update']);
 Route::delete('/participants', [ParticipantsController::class, 'destroy']);
 Route::get('/randomnumbergenerate', [RandomNumberGenerate::class, 'index']);
 Route::post('/recaptchafetchapi', [ReCaptchaFetchApiController::class, 'post']);
-Route::put('/stripe/{subscription_id}/{trial_end_date}', [StripeController::class, 'show']);
+Route::get('/stripe/{id}', [StripeController::class, 'show']);
+Route::put('/stripe/{subscription_id}/{trial_end_date}', [StripeController::class, 'update']);
