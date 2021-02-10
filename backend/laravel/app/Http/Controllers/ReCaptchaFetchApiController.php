@@ -30,6 +30,7 @@ class ReCaptchaFetchApiController extends Controller
             ]);
         }
 
+        // トークンのリクエスト
         $response = $client->request(
             'POST',
             'https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $token, // URLを設定

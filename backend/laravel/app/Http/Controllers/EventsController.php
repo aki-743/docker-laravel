@@ -15,6 +15,7 @@ class EventsController extends Controller
      */
     public function index()
     {
+        // イベントの取得
         $items = Event::all();
         return response()->json([
             'data'=>$items,
@@ -30,6 +31,7 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+        // 新しいイベントの格納
         $item = new Event;
         $item->year=$request->year;
         $item->month=$request->month;
@@ -54,6 +56,7 @@ class EventsController extends Controller
      */
     public function show(Event $event)
     {
+        // 特定のイベントを取得
         $participants = DB::table('participants')->where('share_id', $event->id)->get();
         return response()->json([
             'data'=>$participants,
@@ -70,6 +73,7 @@ class EventsController extends Controller
      */
     public function update(Request $request, Event $event)
     {
+        // イベント内容の更新
         $item = Event::where('id', $event->id)->first();
         $item->year=$request->year;
         $item->month=$request->month;
@@ -94,6 +98,7 @@ class EventsController extends Controller
      */
     public function destroy(Event $event)
     {
+        // イベントの消去
         $item = Event::where('id', $event->id)->delete();
         if($item){
             return response()->json([

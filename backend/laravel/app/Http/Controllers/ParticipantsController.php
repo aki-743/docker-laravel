@@ -14,6 +14,7 @@ class ParticipantsController extends Controller
      */
     public function index()
     {
+        // イベントの参加者を全員取得
         $items = Participant::all();
         return response()->json([
             'data'=>$items,
@@ -29,11 +30,13 @@ class ParticipantsController extends Controller
      */
     public function store(Request $request)
     {
+        // ユーザー情報の取得
         $same_item = Participant::where('user_uid', $request->user_uid)->first();
         if($same_item){
+            // 既に存在したらエラーを返す
             return response()->json([
                 'message'=>'You have already participated in the event'
-            ]);
+            ], 400);
         }else{
             $item = new Participant;
             $item->share_id = $request->share_id;
@@ -68,6 +71,7 @@ class ParticipantsController extends Controller
      */
     public function update(Request $request, Participant $participant)
     {
+        // ユーザー情報の更新
         $valid_changing_user_property_value = $request->changing_user_property_value;
         $valid_changing_user_property_value = preg_replace('/(images)\//', '$1%2F', $valid_changing_user_property_value);
         $valid_changing_user_property_value = preg_replace('/\/([a-zA-Z0-9ぁ-んァ-ヶ亜-熙]*\.jpg|jpeg|png)/', '%2F$1', $valid_changing_user_property_value);
