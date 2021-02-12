@@ -28,5 +28,6 @@ Route::get('/randomnumbergenerate', [RandomNumberGenerate::class, 'index']);
 Route::post('/recaptchafetchapi', [ReCaptchaFetchApiController::class, 'post']);
 Route::get('/stripe/{id}', [StripeController::class, 'show']);
 Route::post('/stripe', [StripeController::class, 'store']);
-Route::put('/stripe/{subscription_id}/{trial_end_date}', [StripeController::class, 'update']);
+Route::put('/stripe/trial', [StripeController::class, 'trialUpdate']);
+Route::put('/stripe/credit', [StripeController::class, 'creditUpdate']);
 Route::post('/contact', [ContactController::class, 'store']);
