@@ -7,6 +7,7 @@ use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\RandomNumberGenerate;
 use App\Http\Controllers\ReCaptchaFetchApiController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,4 @@ Route::post('/recaptchafetchapi', [ReCaptchaFetchApiController::class, 'post']);
 Route::get('/stripe/{id}', [StripeController::class, 'show']);
 Route::post('/stripe', [StripeController::class, 'store']);
 Route::put('/stripe/{subscription_id}/{trial_end_date}', [StripeController::class, 'update']);
+Route::post('/contact', [ContactController::class, 'store']);
