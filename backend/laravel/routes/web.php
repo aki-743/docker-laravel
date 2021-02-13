@@ -18,3 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/contact', [ContactBladeController::class, 'index']);
+Route::get('/correspond', [ContactBladeController::class, 'show']);

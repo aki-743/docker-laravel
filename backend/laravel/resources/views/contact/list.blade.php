@@ -23,14 +23,21 @@
     td {
         text-align:  center;        /* 文字の揃え位置指定 */
     }
+    .contact-list input {
+      position: absolute;
+      top: -1000000px;
+    }
+    tr td:last-child {
+      width: 70px;
+    }
   </style>
 </head>
 
 <body>
+  <div class="contact-list">
   <h1>お問い合わせ一覧</h1>
   <table>
     <tr>
-      <th>id</th>
       <th>名前</th>
       <th>メールアドレス</th>
       <th>お問い合わせ内容</th>
@@ -39,18 +46,23 @@
       <th>詳細・説明</th>
     </tr>
     @foreach ($data as $contact)
+      <form action="/correspond" method="GET">
+        <input name="id" value="{{$contact->id}}"/>
         <tr>
-          <td>{{$contact->id}}</td>
           <td>{{$contact->name}}</td>
           <td>{{$contact->email}}</td>
           <td>{{$contact->item}}</td>
           <td>{{$contact->facebook_name}}</td>
           <td>{{$contact->user_uid}}</td>
           <td>{{$contact->detail}}</td>
+          <td>
+            <button type="submit">対応する</button>
+          </td>
         </tr>
-        <button>対応する</button>
+      </form>
     @endforeach
   </table>
+  </div>
 </body>
 
 </html>

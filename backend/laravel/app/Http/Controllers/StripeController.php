@@ -29,26 +29,30 @@ class StripeController extends Controller
 
         if ($customer->default_source) {
             // デフォルトソースがある時の処理（クレジットカードを更新している時）
-            $customerPaymentMethods = $stripe->paymentMethods->retrieve(
+            $customerCreditInfo = $stripe->customers->retrieveSource(
+                $request->id,
                 $customer->default_source,
                 []
             );
             return response()->json([
-                'data' => $customerPaymentMethods,
+                'default_source' => true,
+                'data' => $customerCreditInfo,
                 'message' => 'Getting customer`s paymentmethods is success',
             ], 200);
         } else {
             // デフォルトソースが無いときの処理（クレジットカードを一回も更新しいない時）
-            $customerPaymentMethods = $stripe->paymentMethods->all([
+            $customerCreditInfo = $stripe->paymentMethods->all([
                 'customer' => $request->id,
                 'type' => 'card'
             ]);
             return response()->json([
-                'data' => $customerPaymentMethods->data,
+                'default_source' => false,
+                'data' => $customerCreditInfo->data,
                 'message' => 'Getting customer`s paymentmethods is success',
             ], 200);
         }
     }
+
     public function creditUpdate(Request $request) {
         // ユーザーのクレジットカード情報の更新
         require_once(__DIR__.'/../../../vendor/autoload.php');
@@ -60,16 +64,31 @@ class StripeController extends Controller
         $customer_id = $request->id;
         $token = $request->token;
 
+        $customer = $stripe->customers->retrieve(
+            $customer_id,
+            []
+        );
+
+        if(!$customer) {
+            return response()->json([
+                'message' => 'The customer is undefiend',
+            ], 400);
+        }
+
+        // ソースの作成
         $new_card = $stripe->customers->createSource(
             $customer_id,
             ['source' => $token]
-          );          
+        );
         $customer->default_source = $new_card->id;
         $customer->save();
+
         return response()->json([
+            'data' => $new_card,
             'message' => 'Updating customer`s paymentmethods is success',
         ], 200);
     }
+
     public function trialUpdate(Request $request) {
         // ユーザーのトライアル期間の更新
         require_once(__DIR__.'/../../../vendor/autoload.php');

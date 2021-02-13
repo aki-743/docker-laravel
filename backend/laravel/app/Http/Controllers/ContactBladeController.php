@@ -18,7 +18,7 @@ class ContactBladeController extends Controller
         $data = [
             'data' => $contacts
         ];
-        return view('contact', $data);
+        return view('contact.list', $data);
     }
 
     /**
@@ -48,9 +48,13 @@ class ContactBladeController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show(Request $request, Contact $contact)
     {
-        //
+        $item = Contact::where('id', $request->id)->first();
+        $data = [
+            'data' => $item
+        ];
+        return view('contact.correspondence', $data);
     }
 
     /**
