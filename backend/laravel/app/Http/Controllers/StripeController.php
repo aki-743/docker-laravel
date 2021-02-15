@@ -108,4 +108,24 @@ class StripeController extends Controller
             'message' => 'Updating subscription is success',
         ], 200);
     }
+
+    public function subscriptionUpdate(Request $request) {
+        // サブスクリプションの解約を行った時の処理
+        require_once(__DIR__.'/../../../vendor/autoload.php');
+
+        $secret_key = config('app.STRIPE_SECRET_KEY');
+        $subscription_id = $request->subscription_id;
+
+        $stripe = new \Stripe\StripeClient($secret_key);
+
+        $stripe->subscriptions->update(
+            $subscription_id,
+            [
+                'cancel_at_period_end' => true,
+            ]
+        );
+        return response()->json([
+            'message' => 'Canceling subscription is success'
+        ], 200);
+    }
 }
