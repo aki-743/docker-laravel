@@ -61,6 +61,7 @@ class StripeController extends Controller
 
         $stripe = new \Stripe\StripeClient($secret_key);
 
+        // カスタマーID、トークンの取得
         $customer_id = $request->id;
         $token = $request->token;
 
@@ -69,6 +70,7 @@ class StripeController extends Controller
             []
         );
 
+        // クレジットを登録していない場合、処理を終了
         if(!$customer) {
             return response()->json([
                 'message' => 'The customer is undefiend',

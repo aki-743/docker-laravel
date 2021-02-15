@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/contact', [ContactBladeController::class, 'index']);
+Route::post('/contact/delete', [ContactBladeController::class, 'store']);
 Route::get('/correspond', [ContactBladeController::class, 'show']);

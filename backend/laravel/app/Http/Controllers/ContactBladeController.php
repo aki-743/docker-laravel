@@ -39,7 +39,8 @@ class ContactBladeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Contact::where('id', $request->id)->delete();
+        return view('contact.delete');
     }
 
     /**
