@@ -1,0 +1,13 @@
+backend/laraevl/vendor/*
+backend/.env
+
+# archives
+*.zip
+*.lzh
+*.tar.gz
+*.tgz
+*.bz2
+*.dmg
+
+# Node
+node_modules
