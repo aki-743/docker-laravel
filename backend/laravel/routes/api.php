@@ -19,15 +19,17 @@ use App\Http\Controllers\ContactController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::apiResource('/events', EventsController::class);
-Route::get('/participants', [ParticipantsController::class, 'index']);
-Route::post('/participants', [ParticipantsController::class, 'store']);
-Route::put('/participants', [ParticipantsController::class, 'update']);
-Route::delete('/participants', [ParticipantsController::class, 'destroy']);
-Route::get('/randomnumbergenerate', [RandomNumberGenerate::class, 'index']);
-Route::post('/recaptchafetchapi', [ReCaptchaFetchApiController::class, 'post']);
-Route::get('/stripe/{id}', [StripeController::class, 'show']);
-Route::put('/stripe/trial', [StripeController::class, 'trialUpdate']);
-Route::put('/stripe/credit', [StripeController::class, 'creditUpdate']);
-Route::put('/stripe/subscription', [StripeController::class, 'subscriptionUpdate']);
-Route::post('/contact', [ContactController::class, 'store']);
+Route::middleware('apicors')->group(function() {
+  Route::apiResource('/events', EventsController::class);
+  Route::get('/participants', [ParticipantsController::class, 'index']);
+  Route::post('/participants', [ParticipantsController::class, 'store']);
+  Route::put('/participants', [ParticipantsController::class, 'update']);
+  Route::delete('/participants', [ParticipantsController::class, 'destroy']);
+  Route::get('/randomnumbergenerate', [RandomNumberGenerate::class, 'index']);
+  Route::post('/recaptchafetchapi', [ReCaptchaFetchApiController::class, 'post']);
+  Route::get('/stripe/{id}', [StripeController::class, 'show']);
+  Route::put('/stripe/trial', [StripeController::class, 'trialUpdate']);
+  Route::put('/stripe/credit', [StripeController::class, 'creditUpdate']);
+  Route::put('/stripe/subscription', [StripeController::class, 'subscriptionUpdate']);
+  Route::post('/contact', [ContactController::class, 'store']);
+});

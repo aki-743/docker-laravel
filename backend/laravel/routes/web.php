@@ -14,9 +14,9 @@ use App\Http\Controllers\ContactBladeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/login', [ContactBladeController::class, 'isAuth']);
+Route::post('/logged', [ContactBladeController::class, 'login']);
+Route::post('/logout', [ContactBladeController::class, 'logout']);
 Route::get('/contact', [ContactBladeController::class, 'index']);
 Route::post('/contact/delete', [ContactBladeController::class, 'store']);
 Route::get('/correspond', [ContactBladeController::class, 'show']);

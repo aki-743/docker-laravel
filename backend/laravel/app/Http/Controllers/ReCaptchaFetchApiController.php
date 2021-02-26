@@ -10,6 +10,7 @@ class ReCaptchaFetchApiController extends Controller
         // reCaptchaのトークン認証を行う
         $client = new \GuzzleHttp\Client();
 
+
         // バージョンによってシークレットキーを変える
         $version = $request->version;
         if($version === 'V2') {

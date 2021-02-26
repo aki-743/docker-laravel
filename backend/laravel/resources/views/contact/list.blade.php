@@ -67,6 +67,10 @@
       </form>
     @endforeach
   </table>
+  <form action="/logout" method="POST">
+    @csrf
+    <button type="submit">ログアウト</button>
+  </form>
   </div>
 </body>
 <script>

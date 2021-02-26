@@ -229,6 +229,10 @@ return [
 
     ],
 
+    // お問い合わせ用
+    'ADMIN_NAME' => env('ADMIN_NAME'),
+    'ADMIN_PASSWORD' => env('ADMIN_PASSWORD'),
+
     // グーグルリキャプチャのシークレットキー
     'RECAPTCHA_SECRET_KEY_V2' => env('RECAPTCHA_SECRET_KEY_V2'),
     'RECAPTCHA_SECRET_KEY_V3' => env('RECAPTCHA_SECRET_KEY_V3'),

@@ -1,5 +1,5 @@
-./backend/laraevl/vendor/*
-./backend/.env
+vendor/*
+.env
 
 # archives
 *.zip
@@ -12,4 +12,4 @@
 # Node
 node_modules
 
-./logs/*
+logs/*

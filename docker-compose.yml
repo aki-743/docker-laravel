@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   app:
+    image: app
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
@@ -21,6 +22,7 @@ services:
       - DB_PASSWORD=${DB_PASS:-Masa79308R4Cpf5r}
       - TZ=${TZ:-Asia/Tokyo}
   web:
+    image: web
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile

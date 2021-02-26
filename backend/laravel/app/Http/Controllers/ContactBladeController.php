@@ -4,21 +4,50 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ContactBladeController extends Controller
 {
+    public function isAuth(Request $request) {
+        $isAuth = $request->session()->get('auth', false);
+        if($isAuth) {
+            return redirect('/contact');
+        } else {
+            return view('contact.login');
+        }
+    }
+    public function login(Request $request) {
+        $user = DB::table('users')->where('name', $request->name)->first();
+        if(Hash::check($request->password, $user->password)) {
+            $request->session()->put('auth', true);
+            return redirect('/contact');
+        } else {
+            return redirect('/login');
+        }
+    }
+    public function logout(Request $request) {
+        $request->session()->flush();
+        return redirect('/login');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::all();
-        $data = [
-            'data' => $contacts
-        ];
-        return view('contact.list', $data);
+        $isAuth = $request->session()->get('auth', false);
+        if($isAuth) {
+            $contacts = Contact::all();
+            $data = [
+                'data' => $contacts
+            ];
+            return view('contact.list', $data);
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
