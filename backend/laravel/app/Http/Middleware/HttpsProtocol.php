@@ -17,8 +17,10 @@ class HttpsProtocol
     public function handle(Request $request, Closure $next)
     {
         if (empty($_SERVER['HTTPS']) && env('APP_ENV') === 'production') {
-            header("Location: https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
-            exit;
+            if ($_SERVER["HTTP_X_FORWARDED_PROTO"] != 'https') {
+                return redirect()->secure($request->getRequestUri());
+            }
         }
+        return $next($request);
     }
 }
