@@ -27,7 +27,7 @@ phases:
       - echo Pushing the Docker images...
       - docker push ${REPOSITORY_URI_PHP_FPM}:$IMAGE_TAG
       - docker push ${REPOSITORY_URI_NGINX}:$IMAGE_TAG
-      - echo Writing image definitions file...
+      - echo Writing image definitions file..
       - IMAGE_DIFINITION_PHP_FPM="{\"name\":\"${IMAGE_NAME_PHP_FPM}\",\"imageUri\":\"${REPOSITORY_URI_PHP_FPM}:${IMAGE_TAG}\"}"
       - IMAGE_DIFINITION_NGINX="{\"name\":\"${IMAGE_NAME_NGINX}\",\"imageUri\":\"${REPOSITORY_URI_NGINX}:${IMAGE_TAG}\"}"
       - echo "[${IMAGE_DIFINITION_PHP_FPM},${IMAGE_DIFINITION_NGINX}]" > imagedefinitions.json
