@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,7 +45,7 @@ class ContactBladeController extends Controller
             ];
             return view('contact.list', $data);
         } else {
-            return view('/login');
+            return view('contact.login');
         }
     }
 
