@@ -14,6 +14,9 @@ use App\Http\Controllers\ContactBladeController;
 |
 */
 
+Route::get('/', function() {
+  return view('welcome');
+});
 Route::get('/login', [ContactBladeController::class, 'isAuth']);
 Route::post('/logged', [ContactBladeController::class, 'login']);
 Route::post('/logout', [ContactBladeController::class, 'logout']);

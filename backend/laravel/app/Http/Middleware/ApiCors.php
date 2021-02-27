@@ -16,7 +16,9 @@ class ApiCors
      */
     public function handle(Request $request, Closure $next)
     {
+        // APIリクエストはCORS対策を行う
         if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            // OPTIONSの場合もヘッダーを追加する
             return $next($request)
                 ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
                 ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')

@@ -16,9 +16,11 @@ class ContactCors
      */
     public function handle(Request $request, Closure $next)
     {
+        // 基本的にはWebではCORSを許可しない
         return $next($request)
-            ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
-            ->header('Access-Control-Allow-Methods', 'GET, POST')
-            ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Origin', 'Cache-Control', 'Authorization', 'Accept', 'Accept-Encoding']);
+            ->header('Access-Control-Allow-Origin', null)
+            ->header('Access-Control-Allow-Methods', null)
+            ->header('Access-Control-Allow-Headers', null)
+            ->header('Access-Control-Allow-Credentials', false);
     }
 }
