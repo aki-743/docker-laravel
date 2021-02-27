@@ -1,6 +1,6 @@
 <?php
 return [
-  'paths' => ['*'],
+    'paths' => ['*'],
 
     'allowed_methods' => ['*'],
 

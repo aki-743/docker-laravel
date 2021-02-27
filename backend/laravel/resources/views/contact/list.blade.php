@@ -61,7 +61,7 @@
           <td>{{$contact->detail}}</td>
           <td>
             <button type="submit">対応する</button>
-            <button id="delete">消去する</button>
+            <button class="delete">消去する</button>
           </td>
         </tr>
       </form>
@@ -74,8 +74,9 @@
   </div>
 </body>
 <script>
-  const button = document.getElementById('delete')
-  button.addEventListener('click', function(event) {
+  const buttons = document.querySelectorAll('.delete')
+  for(let i in buttons) {
+    buttons[i].addEventListener('click', function(event) {
     
     let answer = window.confirm('本当に消去しますか？')
     if(answer) {
@@ -86,5 +87,6 @@
       return false
     }
   })
+  }
 </script>
 </html>
