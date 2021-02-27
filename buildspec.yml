@@ -16,7 +16,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image..
+      - echo Building the Docker image...
       - docker build -t ${REPOSITORY_URI_PHP_FPM}:latest -f docker/php/Dockerfile .
       - docker build -t ${REPOSITORY_URI_NGINX}:latest -f docker/nginx/Dockerfile .
       - docker tag ${REPOSITORY_URI_PHP_FPM}:latest ${REPOSITORY_URI_PHP_FPM}:$IMAGE_TAG
