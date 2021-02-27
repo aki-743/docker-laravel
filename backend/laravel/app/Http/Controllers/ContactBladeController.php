@@ -13,7 +13,7 @@ class ContactBladeController extends Controller
     public function isAuth(Request $request) {
         $isAuth = $request->session()->get('auth', false);
         if($isAuth) {
-            return view('/contact');
+            return view('contact.list');
         } else {
             return view('contact.login');
         }
@@ -22,14 +22,14 @@ class ContactBladeController extends Controller
         $user = DB::table('users')->where('name', $request->name)->first();
         if(Hash::check($request->password, $user->password)) {
             $request->session()->put('auth', true);
-            return view('/contact');
+            return view('contact.list');
         } else {
-            return view('/login');
+            return view('contact.login');
         }
     }
     public function logout(Request $request) {
         $request->session()->flush();
-        return view('/login');
+        return view('contact.login');
     }
     /**
      * Display a listing of the resource.
