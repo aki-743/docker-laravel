@@ -2,7 +2,7 @@
 return [
     'paths' => ['*'],
 
-    'allowed_methods' => ['GET', 'POST', 'PUT', 'OPTIONS'],
+    'allowed_methods' => ['*'],
 
     'allowed_origins' => [env('CORS_ORIGIN_URL')],
 
