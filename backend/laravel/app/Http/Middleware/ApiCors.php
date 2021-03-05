@@ -23,6 +23,7 @@ class ApiCors
                 ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
                 ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
                 ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Origin', 'Cache-Control', 'Authorization', 'Accept', 'Accept-Encoding'])
+                ->header('Content-Type', "text/html;charset=utf-8")
                 ->header('Cache-Control', ['no-store', 'no-cache', 'must-revalidate', 'max-age=0'])
                 ->header('Access-Control-Allow-Credentials', true);
         } else {

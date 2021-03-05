@@ -16,9 +16,10 @@ class ContactCors
      */
     public function handle(Request $request, Closure $next)
     {
+        $originURL =  (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'];
         // 基本的にはWebではCORSを許可しない
         return $next($request)
-            ->header('Access-Control-Allow-Origin', null)
+            ->header('Access-Control-Allow-Origin', $originURL)
             ->header('Access-Control-Allow-Methods', null)
             ->header('Access-Control-Allow-Headers', null)
             ->header('Access-Control-Allow-Credentials', false);
