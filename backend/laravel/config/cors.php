@@ -2,7 +2,7 @@
 return [
     'paths' => ['*'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET', 'POST', 'OPTIONS'],
 
     'allowed_origins' => [env('CORS_ORIGIN_URL')],
 
@@ -12,7 +12,7 @@ return [
 
     'exposed_headers' => ['Authorization'],
 
-    'max_age' => 0,
+    'max_age' => 86400,
 
     'supports_credentials' => true,
 ];
