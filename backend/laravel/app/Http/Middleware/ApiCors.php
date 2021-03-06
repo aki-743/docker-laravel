@@ -21,11 +21,11 @@ class ApiCors
             // OPTIONSの場合もヘッダーを追加する
             return $next($request)
                 ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
-                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-                ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Origin', 'Cache-Control', 'Authorization', 'Accept', 'Accept-Encoding'])
+                ->header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+                ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Origin', 'Cache-Control', 'Authorization'])
                 ->header('Access-Control-Expose-Headers', ['Authorization'])
                 ->header('Content-Type', "text/html;charset=utf-8")
-                ->header('Cache-Control', ['no-store', 'no-cache', 'must-revalidate', 'max-age=0'])
+                ->header('Access-Control-Max-Age', 86400)
                 ->header('Access-Control-Allow-Credentials', true);
         } else {
             return $next($request)
