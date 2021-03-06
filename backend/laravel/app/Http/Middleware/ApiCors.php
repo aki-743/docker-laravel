@@ -22,7 +22,7 @@ class ApiCors
             return $next($request)
                 ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
                 ->header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-                ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Origin', 'Cache-Control', 'Authorization'])
+                ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Authorization'])
                 ->header('Access-Control-Expose-Headers', ['Authorization'])
                 ->header('Content-Type', "text/html;charset=utf-8")
                 ->header('Access-Control-Max-Age', 86400)
