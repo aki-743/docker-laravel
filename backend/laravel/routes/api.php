@@ -19,7 +19,6 @@ use App\Http\Controllers\ContactController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::middleware('apicors')->group(function() {
   Route::apiResource('/events', EventsController::class);
   Route::get('/participants', [ParticipantsController::class, 'index']);
   Route::post('/participants', [ParticipantsController::class, 'store']);
@@ -32,4 +31,3 @@ Route::middleware('apicors')->group(function() {
   Route::put('/stripe/credit', [StripeController::class, 'creditUpdate']);
   Route::put('/stripe/subscription', [StripeController::class, 'subscriptionUpdate']);
   Route::post('/contact', [ContactController::class, 'store']);
-});

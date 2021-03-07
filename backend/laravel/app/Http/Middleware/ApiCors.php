@@ -16,23 +16,16 @@ class ApiCors
      */
     public function handle(Request $request, Closure $next)
     {
-        // APIリクエストはCORS対策を行う
-        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-            // OPTIONSの場合もヘッダーを追加する
+        // すべてのレスポンスに CORS 用のヘッダーを追加する必要はないので URL から判断する
+        $paths = explode('/', $request->getPathInfo());
+        if ($paths[1] === 'api') {
             return $next($request)
-                ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
-                ->header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-                ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Origin', 'Cache-Control', 'Authorization', 'Accept', 'Accept-Encoding'])
-                ->header('Access-Control-Expose-Headers', ['Authorization'])
-                ->header('Access-Control-Content-Type', "text/html;charset=utf-8")
-                ->header('Access-Control-Max-Age', 86400)
-                ->header('Access-Control-Allow-Credentials', true);
-        } else {
-            return $next($request)
-                ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
-                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-                ->header('Access-Control-Allow-Headers', ['X-Requested-With', 'Content-Type', 'Origin', 'Cache-Control', 'Authorization', 'Accept', 'Accept-Encoding'])
-                ->header('Access-Control-Allow-Credentials', true);
+            ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
+            ->header('Cache-Control', 'no-cache max-age=3600')
+            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+            ->header('Access-Control-Allow-Credentials', 'true')
+            ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Authorization, content-type, Transfer-Encoding, Accept, Accept-Encoding, Accept-Language');
         }
+        return $next($request);
     }
 }

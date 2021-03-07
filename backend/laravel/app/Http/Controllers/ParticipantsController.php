@@ -31,7 +31,7 @@ class ParticipantsController extends Controller
     public function store(Request $request)
     {
         // ユーザー情報の取得
-        $same_item = Participant::where('user_uid', $request->user_uid)->first();
+        $same_item = Participant::where('user_uid', $request->user_uid)->where('share_id', $request->share_id)->first();
         if($same_item){
             // 既に存在したらエラーを返す
             return response()->json([
