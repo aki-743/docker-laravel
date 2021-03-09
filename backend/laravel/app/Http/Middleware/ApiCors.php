@@ -24,7 +24,8 @@ class ApiCors
             ->header('Cache-Control', 'no-cache max-age=3600')
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
             ->header('Access-Control-Allow-Credentials', 'true')
-            ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Authorization, content-type, Transfer-Encoding, Accept, Accept-Encoding, Accept-Language');
+            ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Authorization, content-type, Transfer-Encoding, Accept, Accept-Encoding, Accept-Language')
+            ->header('Access-Control-Expose-Headers', 'Authorization');
         }
         return $next($request);
     }
