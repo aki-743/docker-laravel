@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         // CORSドメインの設定を追加
-        \App\Http\Middleware\ApiCors::class,
+        // \App\Http\Middleware\ApiCors::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
