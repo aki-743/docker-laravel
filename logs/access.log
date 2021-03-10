@@ -1410,3 +1410,4 @@
 192.168.160.1 - - [10/Mar/2021:16:04:03 +0900] "GET /api/events/ HTTP/1.1" 200 64 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" "-"
 192.168.160.1 - - [10/Mar/2021:16:04:04 +0900] "GET /favicon.ico HTTP/1.1" 200 0 "http://localhost/api/events/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" "-"
 192.168.160.1 - - [10/Mar/2021:16:04:25 +0900] "GET /api/events/?joasjcocjosa HTTP/1.1" 200 64 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" "-"
+192.168.160.1 - - [10/Mar/2021:18:41:49 +0900] "OPTIONS /api/events HTTP/1.1" 204 0 "-" "curl/7.55.1" "-"
