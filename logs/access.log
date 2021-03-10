@@ -1400,3 +1400,5 @@
 192.168.160.1 - - [08/Mar/2021:17:57:07 +0900] "GET /api/events HTTP/1.1" 200 64 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" "-"
 192.168.160.1 - - [08/Mar/2021:17:57:37 +0900] "GET /api/events HTTP/1.1" 200 64 "http://localhost:3000/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Mobile Safari/537.36" "-"
 192.168.160.1 - - [08/Mar/2021:18:15:34 +0900] "GET /api/events HTTP/1.1" 200 64 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" "-"
+192.168.160.1 - - [10/Mar/2021:14:35:10 +0900] "OPTIONS /api/events HTTP/1.1" 200 5 "-" "curl/7.55.1" "-"
+192.168.160.1 - - [10/Mar/2021:14:35:20 +0900] "OPTIONS /api/events HTTP/1.1" 200 5 "-" "curl/7.55.1" "-"

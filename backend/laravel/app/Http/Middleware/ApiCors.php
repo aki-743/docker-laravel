@@ -21,7 +21,7 @@ class ApiCors
         if ($paths[1] === 'api') {
             return $next($request)
             ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
-            ->header('Cache-Control', 'max-age=3600')
+            ->header('Cache-Control', 'public')
             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
             ->header('Access-Control-Allow-Credentials', 'true')
             ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Authorization, content-type, Transfer-Encoding, Accept, Accept-Encoding, Accept-Language')
