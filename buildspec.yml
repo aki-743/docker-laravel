@@ -24,6 +24,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Deleting the Docker images...
+      - aws ecr batch-delete-image --repository-name app --image-ids imageTag=latest
+      - aws ecr batch-delete-image --repository-name web --image-ids imageTag=latest
       - echo Pushing the Docker images...
       - docker push ${REPOSITORY_URI_PHP_FPM}:$IMAGE_TAG
       - docker push ${REPOSITORY_URI_NGINX}:$IMAGE_TAG
