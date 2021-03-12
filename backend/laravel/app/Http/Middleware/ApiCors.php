@@ -35,9 +35,7 @@ class ApiCors
                 ->header('Access-Control-Allow-Credentials', 'true')
                 ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Authorization, content-type, Transfer-Encoding, Accept, Accept-Encoding, Accept-Language')
                 ->header('Access-Control-Expose-Headers', 'Authorization');
-        } 
-        // else if($paths[1] === 'contact') {
-        // }
+        }
         return $next($request);
     }
 }
