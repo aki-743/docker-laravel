@@ -25,11 +25,6 @@ class ContactBladeController extends Controller
     public function login(Request $request) {
         $user = DB::table('users')->where('name', $request->name)->first();
         if(Hash::check($request->password, $user->password)) {
-            $request->session()->put('auth', true);
-            $contacts = Contact::all();
-            $data = [
-                'data' => $contacts
-            ];
             return redirect('/contact');
         } else {
             return redirect('/login');
