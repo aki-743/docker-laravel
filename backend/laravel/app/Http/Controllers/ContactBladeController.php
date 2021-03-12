@@ -30,14 +30,14 @@ class ContactBladeController extends Controller
             $data = [
                 'data' => $contacts
             ];
-            return view('contact.list', $data);
+            return redirect('/contact');
         } else {
-            return view('contact.login');
+            return redirect('/login');
         }
     }
     public function logout(Request $request) {
         $request->session()->flush();
-        return view('contact.login');
+        return redirect('/login');
     }
     /**
      * Display a listing of the resource.
@@ -54,7 +54,7 @@ class ContactBladeController extends Controller
             ];
             return view('contact.list', $data);
         } else {
-            return view('contact.login');
+            return redirect('/login');
         }
     }
 
