@@ -24,10 +24,11 @@ class QrCodeController extends Controller
         // 乱数を生成する
         $length1 = rand(30, 36);
         $length2 = rand(30, 36);
+        $id = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz'), 0, 8);
         $key1 = substr(bin2hex(random_bytes($length1)), 0, $length2);
         $key2 = substr(bin2hex(random_bytes($length2)), 0, $length1);
 
-        $qrCodeURL = 'https://www.guildzaemonia.com/facebooklogin?cashPayment=true&plan='.$plan.'&month='.$month.'&settlement_amount='.$settlement_amount.'&key1='.$key1.'&key2='.$key2;
+        $qrCodeURL = 'https://www.guildzaemonia.com/facebooklogin?cashPayment=true&plan='.$plan.'&month='.$month.'&settlement_amount='.$settlement_amount.'&rq_id='.$id.'&key1='.$key1.'&key2='.$key2;
 
         // Create QR code
         $qrCode = QrCode::create($qrCodeURL)
@@ -41,7 +42,6 @@ class QrCodeController extends Controller
 
         // API通信を行いkey情報の保管
     
-        $id = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz'), 0, 8);
 
         $item = new Qr;
         $item->qr_id = $id;
