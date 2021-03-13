@@ -18,7 +18,9 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 
 RUN apt-get update && \
-  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev && \
+  apt-get -y install git unzip libzip-dev libicu-dev libonig-dev libjpeg-dev libpng-dev libfreetype6-dev && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
-  docker-php-ext-install intl pdo_mysql zip bcmath
+  docker-php-ext-install intl pdo_mysql zip bcmath && \
+  docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ && \
+  docker-php-ext-install gd

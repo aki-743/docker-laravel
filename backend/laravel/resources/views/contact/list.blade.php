@@ -49,7 +49,7 @@
       <th>詳細・説明</th>
     </tr>
     @foreach ($data as $contact)
-      <form id="form" action="/correspond" method="GET">
+      <form id="form" action="/contact/correspond" method="GET">
         @csrf
         <input name="id" value="{{$contact->id}}"/>
         <tr>
@@ -67,7 +67,7 @@
       </form>
     @endforeach
   </table>
-  <form action="/logout" method="POST">
+  <form action="/contact/logout" method="POST">
     @csrf
     <button type="submit">ログアウト</button>
   </form>
@@ -75,7 +75,8 @@
 </body>
 <script>
   const buttons = document.querySelectorAll('.delete')
-  for(let i in buttons) {
+  const length = Object.keys(buttons).length
+  for(let i = 0; i < length; i++) {
     buttons[i].addEventListener('click', function(event) {
     
     let answer = window.confirm('本当に消去しますか？')

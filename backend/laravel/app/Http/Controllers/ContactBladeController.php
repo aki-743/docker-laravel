@@ -26,14 +26,14 @@ class ContactBladeController extends Controller
         $user = DB::table('users')->where('name', $request->name)->first();
         if(Hash::check($request->password, $user->password)) {
             $request->session()->put('auth', true);
-            return redirect('/contact');
+            return redirect('/contact/list');
         } else {
-            return redirect('/login');
+            return redirect('/contact/login');
         }
     }
     public function logout(Request $request) {
         $request->session()->flush();
-        return redirect('/login');
+        return redirect('/contact/login');
     }
     /**
      * Display a listing of the resource.
@@ -50,7 +50,7 @@ class ContactBladeController extends Controller
             ];
             return view('contact.list', $data);
         } else {
-            return redirect('/login');
+            return redirect('/contact/login');
         }
     }
 

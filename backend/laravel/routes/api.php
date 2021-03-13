@@ -8,6 +8,7 @@ use App\Http\Controllers\RandomNumberGenerate;
 use App\Http\Controllers\ReCaptchaFetchApiController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\QrCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,5 @@ use App\Http\Controllers\ContactController;
   Route::put('/stripe/credit', [StripeController::class, 'creditUpdate']);
   Route::put('/stripe/subscription', [StripeController::class, 'subscriptionUpdate']);
   Route::post('/contact', [ContactController::class, 'store']);
+  Route::post('/qr/facebooklogin', [QrCodeController::class, 'confirmKey1']);
+  Route::post('/qr/signup', [QrCodeController::class, 'confirmKey2']);

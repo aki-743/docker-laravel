@@ -52,3 +52,6 @@ services:
       - ${DB_PORT:-13306}:3306
 volumes:
   db-store:
+
+  # - aws ecr batch-delete-image --repository-name app --image-ids imageTag=latest
+  #     - aws ecr batch-delete-image --repository-name web --image-ids imageTag=latest

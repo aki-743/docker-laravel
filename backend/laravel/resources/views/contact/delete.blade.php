@@ -47,7 +47,7 @@
   button.addEventListener('click', function(event) {
     event.preventDefault()
 
-    location.assign('/contact')
+    location.assign('/contact/list')
   })
 </script>
 </html>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactBladeController;
+use App\Http\Controllers\QrCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,13 @@ use App\Http\Controllers\ContactBladeController;
 Route::get('/', function() {
   return view('welcome');
 });
-Route::get('/login', [ContactBladeController::class, 'isAuth']);
-Route::post('/logged', [ContactBladeController::class, 'login']);
-Route::post('/logout', [ContactBladeController::class, 'logout']);
-Route::get('/contact', [ContactBladeController::class, 'index']);
+Route::get('/contact/login', [ContactBladeController::class, 'isAuth']);
+Route::post('/contact/logged', [ContactBladeController::class, 'login']);
+Route::post('/contact/logout', [ContactBladeController::class, 'logout']);
+Route::get('/contact/list', [ContactBladeController::class, 'index']);
 Route::post('/contact/delete', [ContactBladeController::class, 'store']);
-Route::get('/correspond', [ContactBladeController::class, 'show']);
+Route::get('/contact/correspond', [ContactBladeController::class, 'show']);
+Route::get('/qrcode/choice', function() {
+  return view('qrcode.choice');
+});
+Route::post('qrcode/generate', [QrCodeController::class, 'generate']);
