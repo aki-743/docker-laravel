@@ -28,7 +28,7 @@ class QrCodeController extends Controller
         $key1 = substr(bin2hex(random_bytes($length1)), 0, $length2);
         $key2 = substr(bin2hex(random_bytes($length2)), 0, $length1);
 
-        $qrCodeURL = 'https://www.guildzaemonia.com/facebooklogin?cashPayment=true&plan='.$plan.'&month='.$month.'&settlement_amount='.$settlement_amount.'&rq_id='.$id.'&key1='.$key1.'&key2='.$key2;
+        $qrCodeURL = 'https://www.guildzaemonia.com/facebooklogin?cashPayment=true&plan='.$plan.'&month='.$month.'&settlement_amount='.$settlement_amount.'&qr_id='.$id.'&key1='.$key1.'&key2='.$key2;
 
         // Create QR code
         $qrCode = QrCode::create($qrCodeURL)
