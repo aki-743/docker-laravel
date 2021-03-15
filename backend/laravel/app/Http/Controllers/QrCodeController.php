@@ -17,6 +17,8 @@ class QrCodeController extends Controller
         // 現金払いの場合のQRコード生成
         $writer = new PngWriter();
 
+        $origin_URL = config('app.ORIGIN_URL');
+
         // プランや支払額を取得
         $plan = $request->plan;
         $month = $request->month;
@@ -28,7 +30,13 @@ class QrCodeController extends Controller
         $key1 = substr(bin2hex(random_bytes($length1)), 0, $length2);
         $key2 = substr(bin2hex(random_bytes($length2)), 0, $length1);
 
-        $qrCodeURL = 'https://www.guildzaemonia.com/facebooklogin?cashPayment=true&plan='.$plan.'&month='.$month.'&settlement_amount='.$settlement_amount.'&qr_id='.$id.'&key1='.$key1.'&key2='.$key2;
+        if ($request->update) {
+            // 更新なのか新規なのかの判断
+            $qrCodeURL = $origin_URL.'/cashpaymentupdate?cashPayment=true&plan='.$plan.'&month='.$month.'&settlement_amount='.$settlement_amount.'&qr_id='.$id.'&key1='.$key1.'&key2='.$key2;
+        } else {
+            $qrCodeURL = $origin_URL.'/facebooklogin?cashPayment=true&plan='.$plan.'&month='.$month.'&settlement_amount='.$settlement_amount.'&qr_id='.$id.'&key1='.$key1.'&key2='.$key2;
+        }
+
 
         // Create QR code
         $qrCode = QrCode::create($qrCodeURL)
@@ -53,15 +61,6 @@ class QrCodeController extends Controller
         $result = $writer->write($qrCode);
         header('Content-Type: '.$result->getMimeType());
         echo $result->getString();
-
-
-        // // Save it to a file
-        // $result->saveToFile(__DIR__.'/qrcode.png');
-
-        // // Generate a data URI to include image data inline (i.e. inside an <img> tag)
-        // $dataUri = $result->getDataUri();
-
-        // return view('qrcode.generate', $dataUri);
     }
 
     public function confirmKey1(Request $request) {

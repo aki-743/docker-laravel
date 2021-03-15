@@ -14,6 +14,7 @@
 
 <body>
   <h1>QRコード生成画面</h1>
+  <h2>・新規入会</h2>
   <form action="generate?plan=3months_plan&month=3&settlement_amount=9900" method="POST">
     @csrf
     ・3ヶ月プラン（10,350円）→
@@ -25,6 +26,22 @@
     <button type="submit">QRコードを表示する</button>
   </form>
   <form action="generate?plan=12months_plan&month=12&settlement_amount=39600" method="POST">
+    @csrf
+    ・12ヶ月プラン（41,400円）→
+    <button type="submit">QRコードを表示する</button>
+  </form>
+  <h2>・更新</h2>
+  <form action="generate?plan=3months_plan&month=3&settlement_amount=9900&update=true" method="POST">
+    @csrf
+    ・3ヶ月プラン（10,350円）→
+    <button type="submit">QRコードを表示する</button>
+  </form>
+  <form action="generate?plan=6months_plan&month=6&settlement_amount=19800&update=true" method="POST">
+    @csrf
+    ・6ヶ月プラン（20,700円）→
+    <button type="submit">QRコードを表示する</button>
+  </form>
+  <form action="generate?plan=12months_plan&month=12&settlement_amount=39600&update=true" method="POST">
     @csrf
     ・12ヶ月プラン（41,400円）→
     <button type="submit">QRコードを表示する</button>

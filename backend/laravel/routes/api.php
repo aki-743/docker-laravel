@@ -32,5 +32,5 @@ use App\Http\Controllers\QrCodeController;
   Route::put('/stripe/credit', [StripeController::class, 'creditUpdate']);
   Route::put('/stripe/subscription', [StripeController::class, 'subscriptionUpdate']);
   Route::post('/contact', [ContactController::class, 'store']);
-  Route::post('/qr/facebooklogin', [QrCodeController::class, 'confirmKey1']);
-  Route::post('/qr/signup', [QrCodeController::class, 'confirmKey2']);
+  Route::post('/qr/key1', [QrCodeController::class, 'confirmKey1']);
+  Route::post('/qr/key2', [QrCodeController::class, 'confirmKey2']);
