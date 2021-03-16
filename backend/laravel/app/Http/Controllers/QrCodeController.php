@@ -95,7 +95,7 @@ class QrCodeController extends Controller
     public function delete (Request $request) {
         $username = config('database.connections.mysql.username');
         $password = config('database.connections.mysql.password');
-        if ($request->username == $username && $request->password == $password) {
+        if ($request->username === $username && $request->password === $password) {
             DB::table('qrs')->truncate();
             return response()->json([
                 'message' => 'Truncating key`s information is success'
