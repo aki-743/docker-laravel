@@ -241,5 +241,6 @@ return [
     // ストライプのシークレットキー
     'STRIPE_SECRET_KEY' => env('STRIPE_SECRET_KEY'),
     // オリジンURL
-    'ORIGIN_URL' => env('CORS_ORIGIN_URL')
+    'ORIGIN_URL' => env('CORS_ORIGIN_URL'),
+    'FIREBASE_FUNCTIONS_ORIGIN_URL' => env('FIREBASE_FUNCTIONS_ORIGIN_URL'),
 ];
