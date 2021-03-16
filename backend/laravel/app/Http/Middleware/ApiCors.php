@@ -27,7 +27,7 @@ class ApiCors
                         ->header('Cache-Control', 'no-cache private')
                         ->header('Access-Control-Allow-Methods', 'DELETE')
                         ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Authorization, content-type, Transfer-Encoding, Accept, Accept-Encoding, Accept-Language')
-                        ->header('Access-Control-Allow-Credentials', 'true')
+                        ->header('Access-Control-Allow-Credentials', 'true');
                 }
                 return $next($request)
                     ->header('Access-Control-Allow-Origin', config('cors.allowed_origins'))
