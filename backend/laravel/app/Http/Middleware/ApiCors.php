@@ -25,7 +25,7 @@ class ApiCors
                     return $next($request)
                         ->header('Access-Control-Allow-Origin', config('app.FIREBASE_FUNCTIONS_ORIGIN_URL'))
                         ->header('Cache-Control', 'public')
-                        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+                        ->header('Access-Control-Allow-Methods', 'GET, DELETE, OPTIONS')
                         ->header('Access-Control-Allow-Headers', 'X-XSRF-TOKEN, Authorization, content-type, Transfer-Encoding, Accept, Accept-Encoding, Accept-Language')
                         ->header('Access-Control-Allow-Credentials', 'true')
                         ->header('Status', '204');
