@@ -73,22 +73,22 @@ class ParticipantsController extends Controller
     {
         // ユーザー情報の更新
         $valid_changing_user_property_value = $request->changing_user_property_value;
-        $valid_changing_user_property_value = preg_replace('/(images)\//', '$1%2F', $valid_changing_user_property_value);
-        $valid_changing_user_property_value = preg_replace('/\/([a-zA-Z0-9ぁ-んァ-ヶ亜-熙]*\.jpg|jpeg|png)/', '%2F$1', $valid_changing_user_property_value);
+        $valid_changing_user_property_value2 = preg_replace('/(images)\//', '$1%2F', $valid_changing_user_property_value);
+        $valid_changing_user_property_value3 = preg_replace('/\/([a-zA-Z0-9ぁ-んァ-ヶ亜-熙]*\.jpg|jpeg|png)/', '%2F$1', $valid_changing_user_property_value2);
         $item = Participant::where('user_uid', $request->user_uid)->first();
         if(!$item) {
             return response()->json([
                 'message' => 'Valid user is not exist'
-            ], 200);
+            ], 400);
         }
         // ユーザーの更新する項目を$request->changing_user_propertyで受け取る
         // ユーザーの更新する項目の値を$request->changing_user_property_valueで受け取る
         $changing_user_property = $request->changing_user_property;
         if($request->token) {
             // firebaseのphotoURLを読み込むとき、photoURLに&tokenがありphotoURLを正しく読み込むための作業
-            $item->$changing_user_property = $valid_changing_user_property_value . '&token=' . $request->token;
+            $item->$changing_user_property = $valid_changing_user_property_value3 . '&token=' . $request->token;
         } else {
-            $item->$changing_user_property = $request->changing_user_property_value;
+            $item->$changing_user_property = $request->changing_user_property_value3;
         }
         $item->save();
         return response()->json([
