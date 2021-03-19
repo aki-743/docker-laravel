@@ -79,7 +79,7 @@ class ParticipantsController extends Controller
         if(!$item) {
             return response()->json([
                 'message' => 'Valid user is not exist'
-            ], 400);
+            ], 200);
         }
         // ユーザーの更新する項目を$request->changing_user_propertyで受け取る
         // ユーザーの更新する項目の値を$request->changing_user_property_valueで受け取る
