@@ -35,4 +35,5 @@ use App\Http\Controllers\FirebaseController;
   Route::post('/contact', [ContactController::class, 'store']);
   Route::post('/qr/key1', [QrCodeController::class, 'confirmKey1']);
   Route::post('/qr/key2', [QrCodeController::class, 'confirmKey2']);
-  Route::delete('/firebase', [FirebaseController::class, 'delete']);
+  Route::delete('/firebase/events', [FirebaseController::class, 'eventsDelete']);
+  Route::delete('/firebase/qrs', [FirebaseController::class, 'qrsDelete']);

@@ -21,7 +21,7 @@ class ApiCors
         if ($paths[1] === 'api') {
             $origin_URL = config('cors.allowed_origins');
             if ($paths[2] === 'firebase') {
-                $origin_URL = config('app.FIREBASE_FUNCTIONS_ORIGIN_URL')
+                $origin_URL = config('app.FIREBASE_FUNCTIONS_ORIGIN_URL');
             }
             if($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
                 return $next($request)

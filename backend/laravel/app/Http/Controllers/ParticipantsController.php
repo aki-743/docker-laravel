@@ -73,8 +73,11 @@ class ParticipantsController extends Controller
     {
         // ユーザー情報の更新
         $valid_changing_user_property_value = $request->changing_user_property_value;
-        $valid_changing_user_property_value2 = preg_replace('/(images)\//', '$1%2F', $valid_changing_user_property_value);
-        $valid_changing_user_property_value3 = preg_replace('/\/([a-zA-Z0-9ぁ-んァ-ヶ亜-熙]*\.jpg|jpeg|png)/', '%2F$1', $valid_changing_user_property_value2);
+        // 所定のスラッシュ(/)を'%2F'に変える
+        $valid_changing_user_property_value2 = preg_replace('/(images)\/([a-zA-Z0-9]*)\//', '$1%2F$2%2F', $valid_changing_user_property_value);
+        return response()->json([
+            'message' => $valid_changing_user_property_value2
+        ], 200);
         $item = Participant::where('user_uid', $request->user_uid)->first();
         if(!$item) {
             return response()->json([
@@ -86,9 +89,9 @@ class ParticipantsController extends Controller
         $changing_user_property = $request->changing_user_property;
         if($request->token) {
             // firebaseのphotoURLを読み込むとき、photoURLに&tokenがありphotoURLを正しく読み込むための作業
-            $item->$changing_user_property = $valid_changing_user_property_value3 . '&token=' . $request->token;
+            $item->$changing_user_property = $valid_changing_user_property_value2 . '&token=' . $request->token;
         } else {
-            $item->$changing_user_property = $request->changing_user_property_value3;
+            $item->$changing_user_property = $request->changing_user_property_value2;
         }
         $item->save();
         return response()->json([
