@@ -75,9 +75,6 @@ class ParticipantsController extends Controller
         $valid_changing_user_property_value = $request->changing_user_property_value;
         // 所定のスラッシュ(/)を'%2F'に変える
         $valid_changing_user_property_value2 = preg_replace('/(images)\/([a-zA-Z0-9]*)\//', '$1%2F$2%2F', $valid_changing_user_property_value);
-        return response()->json([
-            'message' => $valid_changing_user_property_value2
-        ], 200);
         $item = Participant::where('user_uid', $request->user_uid)->first();
         if(!$item) {
             return response()->json([
