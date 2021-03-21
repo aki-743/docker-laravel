@@ -15,11 +15,11 @@ class FirebaseController extends Controller
         if ($request->username === $username && $request->password === $password) {
             DB::table('events')->where('year', $request->year)->where('month', $request->month)->delete();
             return response()->json([
-                'message' => 'Truncating key`s information is success'
+                'message' => 'To delete event`s data is success'
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Truncating key`s information is failed'
+                'message' => 'To delete event`s data is failed'
             ], 400);
         }
     }
