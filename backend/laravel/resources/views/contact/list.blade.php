@@ -67,10 +67,13 @@
       </form>
     @endforeach
   </table>
-  <form action="/contact/logout" method="POST">
+  <form action="/logout" method="POST">
     @csrf
     <button type="submit">ログアウト</button>
   </form>
+  <button onClick="location.href='/qrcode/choice'">
+    QRコード生成画面へ
+  </button>
   </div>
 </body>
 <script>

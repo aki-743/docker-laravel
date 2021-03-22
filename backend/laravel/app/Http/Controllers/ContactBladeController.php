@@ -28,12 +28,12 @@ class ContactBladeController extends Controller
             $request->session()->put('auth', true);
             return redirect('/contact/list');
         } else {
-            return redirect('/contact/login');
+            return redirect('/login');
         }
     }
     public function logout(Request $request) {
         $request->session()->flush();
-        return redirect('/contact/login');
+        return redirect('/login');
     }
     /**
      * Display a listing of the resource.
@@ -50,7 +50,7 @@ class ContactBladeController extends Controller
             ];
             return view('contact.list', $data);
         } else {
-            return redirect('/contact/login');
+            return redirect('/login');
         }
     }
 
