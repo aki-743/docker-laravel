@@ -18,13 +18,11 @@ use App\Http\Controllers\QrCodeController;
 Route::get('/', function() {
   return view('welcome');
 });
-Route::get('/contact/login', [ContactBladeController::class, 'isAuth']);
-Route::post('/contact/logged', [ContactBladeController::class, 'login']);
-Route::post('/contact/logout', [ContactBladeController::class, 'logout']);
+Route::get('/login', [ContactBladeController::class, 'isAuth']);
+Route::post('/logged', [ContactBladeController::class, 'login']);
+Route::post('/logout', [ContactBladeController::class, 'logout']);
 Route::get('/contact/list', [ContactBladeController::class, 'index']);
 Route::post('/contact/delete', [ContactBladeController::class, 'store']);
 Route::get('/contact/correspond', [ContactBladeController::class, 'show']);
-Route::get('/qrcode/choice', function() {
-  return view('qrcode.choice');
-});
+Route::get('/qrcode/choice', [QrCodeController::class, 'choice']);
 Route::post('qrcode/generate', [QrCodeController::class, 'generate']);

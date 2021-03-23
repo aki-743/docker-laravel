@@ -10,12 +10,28 @@ use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
-use Illuminate\Support\Facades\DB;
 
 class QrCodeController extends Controller
 {
+    
+    public function choice(Request $request) {
+        // ログインしていない場合、ログイン画面へ
+        $isAuth = $request->session()->get('auth', false);
+        if($isAuth) {
+            return view('qrcode.choice');
+        } else {
+            return redirect('/login');
+        }
+    }
+
     public function generate(Request $request) {
         // 現金払いの場合のQRコード生成
+
+        // ログインしていない場合、ログイン画面へ
+        $isAuth = $request->session()->get('auth', false);
+        if(!$isAuth) {
+            return redirect('/login');
+        }
         $writer = new PngWriter();
 
         $origin_URL = config('app.ORIGIN_URL');

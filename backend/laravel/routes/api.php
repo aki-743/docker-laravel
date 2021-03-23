@@ -10,6 +10,7 @@ use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\FirebaseController;
+use App\Http\Controllers\PostalCodeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ use App\Http\Controllers\FirebaseController;
   Route::put('/stripe/credit', [StripeController::class, 'creditUpdate']);
   Route::put('/stripe/subscription', [StripeController::class, 'subscriptionUpdate']);
   Route::post('/contact', [ContactController::class, 'store']);
+  Route::post('/postal', [PostalCodeController::class, 'index']);
   Route::post('/qr/key1', [QrCodeController::class, 'confirmKey1']);
   Route::post('/qr/key2', [QrCodeController::class, 'confirmKey2']);
   Route::delete('/firebase/events', [FirebaseController::class, 'eventsDelete']);

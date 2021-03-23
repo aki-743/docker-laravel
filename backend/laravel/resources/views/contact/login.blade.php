@@ -12,7 +12,7 @@
         </style>
     </head>
     <body>
-        <form action='/contact/logged' method="POST">
+        <form action='/logged' method="POST">
           @csrf
           <label>ユーザーID</label>
           <input type="name" name="name" autocomplete="name" placeholder="ユーザーID">

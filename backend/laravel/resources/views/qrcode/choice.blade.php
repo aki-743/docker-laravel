@@ -46,6 +46,10 @@
     ・3ヶ月プラン（20,700円）→
     <button type="submit">QRコードを表示する</button>
   </form>
+  <form action="/logout" method="POST">
+    @csrf
+    <button type="submit">ログアウト</button>
+  </form>
 </body>
 <script>
   const buttons = document.querySelectorAll('.delete')
