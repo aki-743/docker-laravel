@@ -2528,6 +2528,7 @@
 172.18.0.1 - - [22/Mar/2021:19:32:38 +0900] "OPTIONS /api/recaptchafetchapi HTTP/1.1" 204 0 "http://localhost:3000/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Mobile Safari/537.36" "-"
 172.18.0.1 - - [22/Mar/2021:19:32:42 +0900] "POST /api/recaptchafetchapi HTTP/1.1" 200 193 "http://localhost:3000/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Mobile Safari/537.36" "-"
 172.18.0.1 - - [22/Mar/2021:19:32:49 +0900] "POST /api/postal?postalcode= HTTP/1.1" 200 245 "http://localhost:3000/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Mobile Safari/537.36" "-"
+<<<<<<< HEAD
 172.20.0.1 - - [23/Mar/2021:18:04:11 +0900] "GET / HTTP/1.1" 499 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" "-"
 172.20.0.1 - - [23/Mar/2021:18:04:15 +0900] "GET / HTTP/1.1" 499 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" "-"
 172.20.0.1 - - [23/Mar/2021:18:05:55 +0900] "GET / HTTP/1.1" 499 0 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" "-"
@@ -2565,3 +2566,5 @@
 172.21.0.1 - - [23/Mar/2021:23:49:22 +0900] "POST /api/recaptchafetchapi HTTP/1.1" 200 174 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" "-"
 172.21.0.1 - - [23/Mar/2021:23:49:24 +0900] "OPTIONS /api/contact HTTP/1.1" 204 0 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" "-"
 172.21.0.1 - - [23/Mar/2021:23:49:26 +0900] "POST /api/contact HTTP/1.1" 200 56 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36" "-"
+=======
+>>>>>>> 0416f7086232c88d31b1d3cb6a43820ff51b47a4
